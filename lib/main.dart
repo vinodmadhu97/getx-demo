@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:getx_demo/messages.dart';
 
 import 'home.dart';
 
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      translations: Messages(),
+      locale: Locale('en',"US"),
+      fallbackLocale: Locale('en',"US"),
       title: 'Flutter Demo',
       theme: ThemeData(
 
