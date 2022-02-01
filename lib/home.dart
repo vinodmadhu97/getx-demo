@@ -22,25 +22,18 @@ class HomeScreen extends StatelessWidget {
              /* Obx(()=> Text("Age ${studentController.student.value.age}",style: const TextStyle(fontSize: 30),),
               ),*/
                 
-            GetBuilder<MyController>(
-                id: "textCount",
-                builder: (controller){
-                  return Text("Count ${controller.count} ",style: const TextStyle(fontSize: 30),);
-                }
-                ),
-
-            GetBuilder<MyController>(
-
-                builder: (controller){
-                  return Text("Count ${controller.count} ",style: const TextStyle(fontSize: 30),);
-                }
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                onChanged: (val){
+                  myController.countIncrement();
+                },
+              ),
             ),
-
-
 
             ElevatedButton(
                 onPressed: (){
-                  Get.find<MyController>().countIncrement();
+                  myController.countIncrement();
                 },
                 child: const Text("Add")
             )
