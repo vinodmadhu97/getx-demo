@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_demo/student_controller.dart';
-import 'package:getx_demo/student_model.dart';
+import 'package:getx_demo/my_controller.dart';
+
 
 class HomeScreen extends StatelessWidget {
+  MyController myController = Get.put(MyController());
   HomeScreen({Key? key}) : super(key: key);
 
 
@@ -20,18 +21,19 @@ class HomeScreen extends StatelessWidget {
           children:  [
              /* Obx(()=> Text("Age ${studentController.student.value.age}",style: const TextStyle(fontSize: 30),),
               ),*/
-            GetX<StudentController>(
-                init: StudentController(),
+                
+            GetBuilder<MyController>(
+                init: MyController(),
                 builder: (controller){
-                return Text("Age ${controller.student.value.age} ",style: const TextStyle(fontSize: 30),);
-            }),
+                  return Text("Count ${controller.count} ",style: const TextStyle(fontSize: 30),);
+                }
+                ),
+
+
 
             ElevatedButton(
                 onPressed: (){
-
-                  //if instance of StudentController not created at top
-                  Get.find<StudentController>().ageIncrement();
-
+                  Get.find<MyController>().countIncrement();
                 },
                 child: const Text("Add")
             )
