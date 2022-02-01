@@ -7,11 +7,10 @@ class MyController extends GetxController{
   int count = 0;
 
 
-  void countIncrement() async {
+    void countIncrement() {
 
-    await Future.delayed( Duration(seconds: 5));
     count++;
-    update();
+    update(["textCount"]);
 
   }
 
@@ -20,22 +19,5 @@ class MyController extends GetxController{
     print("Task cleaned");
 
   }
-
-  //Best Approach
-
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    print("my controller initialized");
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
-    print("my controller closed");
-  }
-
 
 }

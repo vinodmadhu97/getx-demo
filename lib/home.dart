@@ -23,13 +23,18 @@ class HomeScreen extends StatelessWidget {
               ),*/
                 
             GetBuilder<MyController>(
-                //not a best practice that should define the controller
-                //initState: (data)=>myController.countIncrement(),
-                //dispose: (_)=>myController.cleanupTask(),
+                id: "textCount",
                 builder: (controller){
                   return Text("Count ${controller.count} ",style: const TextStyle(fontSize: 30),);
                 }
                 ),
+
+            GetBuilder<MyController>(
+
+                builder: (controller){
+                  return Text("Count ${controller.count} ",style: const TextStyle(fontSize: 30),);
+                }
+            ),
 
 
 
