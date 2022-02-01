@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/student_controller.dart';
 import 'package:getx_demo/student_model.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  Rx<Student> student = Student(name: "Tom",age: 20).obs;
-
-
-  void toUpper(){
-    student.update((student) {
-      student!.name = student.name.toUpperCase();
-    });
-  }
+  StudentController studentController = Get.put(StudentController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +19,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
-              Obx(()=> Text("Name is ${student.value.name}",style: const TextStyle(fontSize: 30),),
+              Obx(()=> Text("Name is ${studentController.student.value.name}",style: const TextStyle(fontSize: 30),),
               ),
 
             ElevatedButton(
                 onPressed: (){
-                  toUpper();
+                  studentController.convertToUpperCase();
                 },
                 child: const Text("Add")
             )
