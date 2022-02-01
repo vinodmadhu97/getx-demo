@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/student_model.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  RxInt number = 0.obs;
+  Student student = Student();
 
 
-  void incrementCount(){
-    number++;
+  void toUpper(){
+    student.name.value = student.name.value.toUpperCase();
   }
 
   @override
@@ -22,12 +23,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
-              Obx(()=> Text("Count is $number",style: const TextStyle(fontSize: 30),),
+              Obx(()=> Text("Name is ${student.name.value}",style: const TextStyle(fontSize: 30),),
               ),
 
             ElevatedButton(
                 onPressed: (){
-                  incrementCount();
+                  toUpper();
                 },
                 child: const Text("Add")
             )
