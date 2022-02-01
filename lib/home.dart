@@ -6,7 +6,6 @@ import 'package:getx_demo/student_model.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  StudentController studentController = Get.put(StudentController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +18,20 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
-              Obx(()=> Text("Name is ${studentController.student.value.name}",style: const TextStyle(fontSize: 30),),
-              ),
+             /* Obx(()=> Text("Age ${studentController.student.value.age}",style: const TextStyle(fontSize: 30),),
+              ),*/
+            GetX<StudentController>(
+                init: StudentController(),
+                builder: (controller){
+                return Text("Age ${controller.student.value.age} ",style: const TextStyle(fontSize: 30),);
+            }),
 
             ElevatedButton(
                 onPressed: (){
-                  studentController.convertToUpperCase();
+
+                  //if instance of StudentController not created at top
+                  Get.find<StudentController>().ageIncrement();
+
                 },
                 child: const Text("Add")
             )
