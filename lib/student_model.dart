@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 class Student{
-  var name = "John".obs;
-  var age = 20.obs;
+  String name;
+  int age;
+
+  Student({required this.name, required this.age});
 }

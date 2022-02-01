@@ -5,11 +5,13 @@ import 'package:getx_demo/student_model.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  Student student = Student();
+  Rx<Student> student = Student(name: "Tom",age: 20).obs;
 
 
   void toUpper(){
-    student.name.value = student.name.value.toUpperCase();
+    student.update((student) {
+      student!.name = student.name.toUpperCase();
+    });
   }
 
   @override
@@ -23,7 +25,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
-              Obx(()=> Text("Name is ${student.name.value}",style: const TextStyle(fontSize: 30),),
+              Obx(()=> Text("Name is ${student.value.name}",style: const TextStyle(fontSize: 30),),
               ),
 
             ElevatedButton(
